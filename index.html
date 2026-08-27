@@ -531,6 +531,18 @@
             letter-spacing: -0.015em;
         }
 
+        .achievement-details {
+            display: grid;
+            gap: 7px;
+            margin: 10px 0 0;
+            padding-left: 18px;
+            color: #465165;
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .achievement-details li::marker { color: var(--coral); }
+
         .metric { color: var(--coral); }
 
         .resume-grid {
@@ -981,6 +993,17 @@
             line-height: 1.55;
         }
 
+        .achievement-details {
+            gap: 4px;
+            margin-top: 7px;
+            padding-left: 16px;
+            color: #333;
+            font-size: 12.5px;
+            line-height: 1.65;
+        }
+
+        .achievement-details li::marker { color: inherit; }
+
         .metric { color: inherit; }
 
         .stack-list { gap: 0; margin-top: 8px; }
@@ -1366,8 +1389,15 @@
                                 <p>약 800ms까지 소요되던 큐레이션 조회 구조를 BFF 방식으로 통합하고 Redis 캐싱을 적용해, 캐시 적중 시 평균 응답 시간을 약 100ms로 단축했습니다.</p>
                             </div>
                             <div class="achievement">
-                                <h4>Codex AGENTS.md 기반 개발 가이드 표준화</h4>
-                                <p>AGENTS.md를 팀의 공통 개발 가이드로 활용해 반복적인 커뮤니케이션 비용을 줄이고, 팀원과 AI 에이전트 간 작업 기준과 결과물의 일관성을 높였습니다.</p>
+                                <h4>활동 데이터 수집·검증 파이프라인 자동화</h4>
+                                <p>공공데이터 API와 웹 크롤링 데이터를 정기적으로 수집하는 배치 스케줄러 구조를 설계하고, GPT-4o 기반 2차 검증과 Google Sheets 승인 프로세스를 결합해 <strong class="metric">업무 시간을 1시간에서 5분으로 약 92% 단축</strong>했습니다.</p>
+                                <ul class="achievement-details">
+                                    <li>8종의 공공데이터 API를 통합 관리할 수 있도록 데이터 구조를 정규화하고, 일관된 형태로 데이터베이스에 저장했습니다.</li>
+                                    <li>Serper API로 검색 결과 URL을 수집하고, 웹 크롤링을 통해 데이터베이스에 필요한 정보를 자동으로 추출했습니다.</li>
+                                    <li>누락된 필드는 GPT-4o API로 추가 추출하고, 데이터의 유효성을 2차 검증하는 로직을 구현했습니다.</li>
+                                    <li>데이터의 신뢰성을 확보하기 위해 수집 결과를 DB에 즉시 적재하지 않고 Google Sheets API와 연동했습니다.</li>
+                                    <li>담당자의 최종 검수가 완료되면 상태값이 전환되고, 검증된 데이터만 DB에 자동 반영되도록 워크플로를 구축했습니다.</li>
+                                </ul>
                             </div>
                             <div class="achievement">
                                 <h4>Grafana 모니터링 및 Discord 기반 장애 알림 체계 구축</h4>

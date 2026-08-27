@@ -1361,8 +1361,17 @@
                                 <p>최근 3일간의 결제 데이터를 일자별 ZSET에 집계하고 TTL 만료와 합산 연산으로 순위를 계산해, 평균 응답 시간을 <strong class="metric">71.88ms에서 21.84ms로 69.6% 단축</strong>했습니다.</p>
                             </div>
                             <div class="achievement">
-                                <h4>Transactional Outbox 기반 결제 이벤트 전달 신뢰성 확보</h4>
-                                <p>결제 데이터와 Outbox 이벤트를 하나의 트랜잭션으로 저장해 원자성을 보장하고, 이벤트 발행 실패 시 재처리할 수 있도록 구성했습니다.</p>
+                                <h4>Transactional Outbox 기반 결제 정합성 확보 및 후처리 비동기화</h4>
+                                <ul class="achievement-details">
+                                    <li>
+                                        <strong>핵심 결제 처리:</strong>
+                                        포인트 차감, 결제 정보 저장, 주문 상태 전이와 Outbox 이벤트 저장을 하나의 트랜잭션으로 묶어 데이터 원자성과 이벤트 전달 신뢰성을 확보했습니다.
+                                    </li>
+                                    <li>
+                                        <strong>비동기 후처리:</strong>
+                                        수강 등록과 알림 생성은 별도 워커로 분리하고 재시도·백오프를 적용해 장애 복구가 가능하도록 구성했으며, 사용자 결제 응답 경로를 단축했습니다.
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
